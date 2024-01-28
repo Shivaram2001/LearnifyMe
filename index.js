@@ -10,6 +10,7 @@ const cors = require("cors");
 // Internal imports
 const { dbConnect } = require("./config/dbConnect");
 const { handleError, notFound } = require("./middlewares/errorHandler");
+const userRouter = require('./routes/userRoutes');
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -21,7 +22,7 @@ app.use(cors({
 app.use(cookieParser());
 
 //ROUTES
-
+app.use("/api/v1/user", userRouter);
 
 app.use(notFound);
 app.use(handleError);
